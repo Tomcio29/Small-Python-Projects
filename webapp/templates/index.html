@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Model</title>
+</head>
+<body>
+    <h1>Pima Indians Diabetes Database</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>sequence number</th>
+                <th>pregnancies</th>
+                <th>glucose</th>
+                <th>blood pressure</th>
+                <th>skin thickness</th>
+                <th>insulin</th>
+                <th>BMI</th>
+                <th>diabetes pedigree function</th>
+                <th>age</th>
+                <th>category</th>
+            </tr>
+        </thead>
+        <tbody>
+           {% for data in data_points %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ data.pregnancies }}</td>
+                <td>{{ data.glucose }}</td>
+                <td>{{ data.blood_pressure }}</td>
+                <td>{{ data.skin_thickness }}</td>
+                <td>{{ data.insulin }}</td>
+                <td>{{ data.bmi }}</td>
+                <td>{{ data.diabetes_pedigree_function }}</td>
+                <td>{{ data.age }}</td>
+                <td>{{ data.outcome }}</td>
+                <td>
+                    <form action="{{ url_for('delete_data', record_id=data.id) }}" method="post">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p><a href="{{ url_for('add_data') }}">Add Data</a></p>
+</body>
+</html>
+
+

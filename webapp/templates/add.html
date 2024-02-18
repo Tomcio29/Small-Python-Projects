@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Data</title>
+</head>
+<body>
+    {% from "bootstrap5/form.html" import render_form %}
+    <h1>Add Data</h1>
+    <form action="{{ url_for('add_data') }}" method="post">
+        {{ render_form(form, novalidate=True) }}
+    </form>
+    <p><a href="{{ url_for('show_data') }}">Back to Data Points</a></p>
+</body>
+</html>
